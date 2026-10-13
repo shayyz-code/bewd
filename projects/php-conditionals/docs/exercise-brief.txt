@@ -1,0 +1,72 @@
+;Exercise 1: Pass or Fail
+
+Write a PHP program to store a student's mark in a variable named $mark. Use an if...else statement to check whether the student passes or fails the examination.
+
+If the mark is 40 or above, display "Pass".
+
+Otherwise, display "Fail".
+
+
+Exercise 2: Positive, Negative or Zero
+
+Write a PHP program to store an integer in a variable named $number. Use if...elseif...else statements to determine whether the number is positive, negative, or zero.
+
+If the number is greater than 0, display "Positive Number".
+
+If the number is less than 0, display "Negative Number".
+
+If the number is equal to 0, display "Zero".
+
+
+Exercise 3: Discount Calculation
+
+Write a PHP program to store a product's price in a variable named $price. Use an if...else statement to calculate the final price after applying a discount.
+
+If the price is 50,000 MMK or above, apply a 10% discount.
+
+Otherwise, no discount is applied.
+
+Display the original price, discount amount, and final price.
+
+
+Exercise 4: Find the Largest Number
+
+Write a PHP program to store two integers in variables named $num1 and $num2. Use an if...else statement to determine and display the larger number.
+
+If both numbers are equal, display "Both numbers are equal".
+
+
+Exercise 5: Electricity Bill Calculation
+
+Write a PHP program to store the number of electricity units consumed in a variable named $units. Calculate the electricity bill using the following rules.
+
+If the units are 50 or less, the charge is 35 MMK per unit.
+
+If the units are greater than 50 and less than or equal to 100, the charge is 50 MMK per unit.
+
+If the units are greater than 100 and less than or equal to 200, the charge is 75 MMK per unit.
+
+If the units are greater than 200 and less than or equal to 300, the charge is 100 MMK per unit.
+
+If the units are greater than 300, the charge is 150 MMK per unit.
+
+Use if...elseif...else statements to determine the rate and calculate the total bill. The applicable rate is charged for all units consumed.
+
+
+Exercise 6: Movie Ticket Price
+
+Write a PHP program to store a person's age in a variable named $age. Use if...elseif...else statements to determine the movie ticket price according to the following rules.
+
+If the age is less than 5, the ticket is free.
+
+If the age is between 5 and 12, the ticket price is 1,000 MMK.
+
+If the age is between 13 and 17, the ticket price is 2,000 MMK.
+
+If the age is between 18 and 59, the ticket price is 4,000 MMK.
+
+If the age is between 60 and 69, the ticket price is 2,000 MMK.
+
+If the age is 70 or above, the ticket price is 1,000 MMK.
+
+Display the person's age and ticket price.
