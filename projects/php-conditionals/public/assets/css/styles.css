@@ -10,33 +10,34 @@ body {
 }
 
 .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-h1 { font-size: 28px; }
+h1 { font-size: 28px; margin: 0 0 24px; }
 h2 { font-size: 22px; }
 a { color: #0645ad; }
 :focus-visible { outline: 2px solid #0645ad; outline-offset: 3px; }
 
-.site-header { border-bottom: 1px solid #ccc; }
+.site-header { background: #f2f2f2; border-bottom: 1px solid #ccc; }
 .site-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; }
-.exercise-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
-.exercise-nav a[aria-current="page"] { font-weight: bold; text-decoration: underline; }
+.exercise-nav { display: flex; flex-wrap: wrap; gap: 4px; }
+.exercise-nav a { padding: 6px 10px; border-radius: 3px; text-decoration: none; }
+.exercise-nav a:hover { text-decoration: underline; }
+.exercise-nav a[aria-current="page"] { background: #ddd; font-weight: bold; }
 .site-footer { border-top: 1px solid #ccc; font-size: 14px; }
 .site-footer p { margin: 0; }
 
 .exercise-list { padding-left: 24px; }
 .exercise-list li { margin-bottom: 16px; }
-.exercise-list p { margin: 4px 0; }
 .form-field { margin-bottom: 16px; }
 .form-field label { display: block; margin-bottom: 4px; }
-.form-field input { width: 100%; max-width: 360px; padding: 6px; border: 1px solid #888; font: inherit; }
+.form-field input { width: 100%; max-width: 360px; padding: 8px; border: 1px solid #888; border-radius: 3px; font: inherit; }
 .field-hint { margin: 4px 0; font-size: 14px; color: #555; }
-.field-error, .error-summary { color: #a00; }
+.field-error { color: #a00; }
 .field-error { margin: 4px 0; }
 .form-field input[aria-invalid="true"] { border-color: #a00; }
-button { padding: 6px 12px; font: inherit; cursor: pointer; }
+button { padding: 8px 14px; background: #0645ad; color: white; border: 1px solid #0645ad; border-radius: 3px; font: inherit; cursor: pointer; }
+button:hover { background: #053987; }
 
-.result-panel { border: 1px solid #ccc; margin-top: 24px; padding: 12px; overflow-wrap: anywhere; }
+.result-panel { max-width: 480px; border: 1px solid #ccc; border-radius: 3px; margin-top: 24px; padding: 12px; overflow-wrap: anywhere; }
 .result-panel h2 { margin-top: 0; }
-.result-value { font-weight: bold; }
 .result-rows dt { font-weight: bold; }
 .result-rows dd { margin: 0 0 8px; }
 .page-navigation { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 24px; }

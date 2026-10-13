@@ -38,13 +38,13 @@ php-conditionals/
 └── docs/             # Original brief and browser screenshots
 ```
 
-Each exercise entry point selects its catalogue key and loads the shared page. The catalogue provides labels, rules, fields, navigation, and the calculation function. Calculation functions return data; templates render it with HTML escaping.
+Each exercise entry point selects its catalogue key and loads the shared page. The catalogue provides labels, fields, navigation, and the calculation function. Calculation functions return data; templates render it with HTML escaping. Pages show only titles, forms, and results; the full rules remain in this README and the original assignment.
 
 Forms accept decimal prices with at most two fractional digits. Internally, `$price` is stored in integer cents; the threshold is `50_000 * 100`. Discounts round half up to the nearest cent, and every monetary result includes two decimal places and `MMK`. This keeps calculations and formatting exact without floating-point arithmetic.
 
 Integers must fit PHP’s signed integer range. Money must fit that range in cents. Electricity units are capped at `intdiv(PHP_INT_MAX, 150)` to keep the maximum bill within the same range. Invalid or missing values produce field-specific errors and retain the submitted text. Commas and scientific notation are not accepted as numeric input.
 
-The app stores no user data and needs no database, session, framework, or client-side script. A small local stylesheet provides a white background, Arial text, basic forms, and a single-column layout.
+The app stores no user data and needs no database, session, framework, or client-side script. A small local stylesheet provides Arial text, a grey navbar, blue buttons, bordered inputs, and a single-column layout.
 
 ## Verification
 
@@ -57,7 +57,7 @@ find projects/php-conditionals -name '*.php' -print0 | xargs -0 -n 1 php -l
 
 The test runner exits nonzero on failure. It covers pass/fail, every number classification, discount rounding and thresholds, comparisons and equality, all electricity and movie-ticket boundaries, blank/malformed/array inputs, range limits, exact money formatting, HTML escaping, and URL generation.
 
-Browser verification covers valid and invalid POST submissions, retained inputs, escaped HTML, navigation, and horizontal overflow at 320, 390, 768, and 1440 pixel viewport widths. The screenshots below were captured from the running PHP application.
+Browser verification covers valid and invalid POST submissions, retained inputs, escaped HTML, navigation, and result visibility after validation. Forms and results were checked for horizontal overflow at 320, 390, 768, and 1440 pixel viewport widths. The screenshots below were captured from the running PHP application.
 
 ## Screenshots
 

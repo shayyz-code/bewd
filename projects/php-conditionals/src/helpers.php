@@ -97,11 +97,11 @@ function format_mmk(int $amount, bool $inCents = false): string
 function result_view(string $id, array $result): array
 {
     return match ($id) {
-        'pass-or-fail' => ['headline' => $result['status'], 'caption' => 'Examination result', 'rows' => ['Student mark' => $result['mark'] . ' / 100', 'Pass threshold' => '40 / 100']],
-        'number-classification' => ['headline' => $result['classification'], 'caption' => 'Number classification', 'rows' => ['Your number' => format_integer($result['number'])]],
-        'discount-calculator' => ['headline' => format_mmk($result['final_price'], true), 'caption' => 'Final price', 'rows' => ['Original price' => format_mmk($result['price'], true), 'Discount amount' => format_mmk($result['discount'], true)]],
-        'largest-number' => ['headline' => $result['largest'] === null ? $result['message'] : format_integer($result['largest']), 'caption' => $result['largest'] === null ? 'A perfect match' : 'The larger number', 'rows' => ['First number' => format_integer($result['num1']), 'Second number' => format_integer($result['num2'])]],
-        'electricity-bill' => ['headline' => format_mmk($result['total']), 'caption' => 'Total electricity bill', 'rows' => ['Units consumed' => format_integer($result['units']), 'Rate per unit' => format_mmk($result['rate'])]],
-        'movie-ticket' => ['headline' => $result['ticket_price'] === 0 ? 'Free' : format_mmk($result['ticket_price']), 'caption' => 'Movie ticket price', 'rows' => ['Person’s age' => format_integer($result['age']) . ' years', 'Ticket price' => format_mmk($result['ticket_price'])]],
+        'pass-or-fail' => ['headline' => $result['status'], 'label' => null, 'rows' => []],
+        'number-classification' => ['headline' => $result['classification'], 'label' => null, 'rows' => []],
+        'discount-calculator' => ['headline' => format_mmk($result['final_price'], true), 'label' => 'Final price', 'rows' => ['Original price' => format_mmk($result['price'], true), 'Discount amount' => format_mmk($result['discount'], true)]],
+        'largest-number' => ['headline' => $result['largest'] === null ? $result['message'] : format_integer($result['largest']), 'label' => null, 'rows' => []],
+        'electricity-bill' => ['headline' => format_mmk($result['total']), 'label' => 'Total bill', 'rows' => ['Rate per unit' => format_mmk($result['rate'])]],
+        'movie-ticket' => ['headline' => $result['ticket_price'] === 0 ? 'Free' : format_mmk($result['ticket_price']), 'label' => 'Ticket price', 'rows' => ['Person’s age' => format_integer($result['age']) . ' years']],
     };
 }

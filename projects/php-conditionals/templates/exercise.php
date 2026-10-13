@@ -24,58 +24,35 @@ $position = array_search($currentExercise, $ids, true);
 require __DIR__ . '/header.php';
 ?>
 <main id="main" class="container">
-    <a href="<?= escape(app_url('index.php')) ?>">All exercises</a>
-    <h1>Exercise <?= escape((int) $exercise['number']) ?>: <?= escape($exercise['title']) ?></h1>
-    <p><?= escape($exercise['description']) ?></p>
+    <h1 id="exercise-title">Exercise <?= escape((int) $exercise['number']) ?>: <?= escape($exercise['title']) ?></h1>
 
-    <section aria-labelledby="rules-title">
-        <h2 id="rules-title">Rules</h2>
-        <p>PHP statement: <code><?= escape($exercise['syntax']) ?></code></p>
-        <ul>
-            <?php foreach ($exercise['rules'] as $rule): ?>
-                <li><?= escape($rule) ?></li>
-            <?php endforeach; ?>
-        </ul>
-        <?php if (isset($exercise['note'])): ?>
-            <p><?= escape($exercise['note']) ?></p>
-        <?php endif; ?>
-    </section>
-
-    <section aria-labelledby="calculator-title">
-        <h2 id="calculator-title">Calculate</h2>
-        <?php if ($errors !== []): ?>
-            <p class="error-summary" role="alert">Check the highlighted fields and try again.</p>
-        <?php endif; ?>
-        <form method="post" action="<?= escape(app_url('exercises/' . $currentExercise . '.php')) ?>" novalidate>
-            <?php foreach ($exercise['fields'] as $name => $field): ?>
-                <div class="form-field">
-                    <label for="<?= escape($name) ?>"><?= escape($field['label']) ?></label>
-                    <input type="text" inputmode="<?= $field['type'] === 'money' ? 'decimal' : (isset($field['min']) ? 'numeric' : 'text') ?>" name="<?= escape($name) ?>" id="<?= escape($name) ?>" value="<?= escape($submitted[$name] ?? '') ?>" placeholder="<?= escape($field['placeholder']) ?>" required aria-describedby="<?= escape($name) ?>-hint<?= isset($errors[$name]) ? ' ' . escape($name) . '-error' : '' ?>"<?= isset($errors[$name]) ? ' aria-invalid="true"' : '' ?>>
-                    <p class="field-hint" id="<?= escape($name) ?>-hint"><?= escape($field['hint']) ?></p>
-                    <?php if (isset($errors[$name])): ?>
-                        <p class="field-error" id="<?= escape($name) ?>-error"><?= escape($errors[$name]) ?></p>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
-            <button type="submit">Calculate result</button>
-        </form>
-    </section>
-
-    <section class="result-panel" aria-labelledby="result-title" aria-live="polite" aria-atomic="true">
-        <h2 id="result-title">Result</h2>
-        <?php if ($result !== null): ?>
-            <p><?= escape($result['caption']) ?></p>
-            <p class="result-value"><?= escape($result['headline']) ?></p>
-            <dl class="result-rows">
-                <?php foreach ($result['rows'] as $label => $value): ?>
-                    <dt><?= escape($label) ?></dt>
-                    <dd><?= escape($value) ?></dd>
-                <?php endforeach; ?>
-            </dl>
-        <?php else: ?>
-            <p>Your result will appear here after submitting valid values.</p>
-        <?php endif; ?>
-    </section>
+    <form method="post" action="<?= escape(app_url('exercises/' . $currentExercise . '.php')) ?>" aria-labelledby="exercise-title" novalidate>
+        <?php foreach ($exercise['fields'] as $name => $field): ?>
+            <div class="form-field">
+                <label for="<?= escape($name) ?>"><?= escape($field['label']) ?></label>
+                <input type="text" inputmode="<?= $field['type'] === 'money' ? 'decimal' : (isset($field['min']) ? 'numeric' : 'text') ?>" name="<?= escape($name) ?>" id="<?= escape($name) ?>" value="<?= escape($submitted[$name] ?? '') ?>" placeholder="<?= escape($field['placeholder']) ?>" required aria-describedby="<?= escape($name) ?>-hint<?= isset($errors[$name]) ? ' ' . escape($name) . '-error' : '' ?>"<?= isset($errors[$name]) ? ' aria-invalid="true"' : '' ?>>
+                <p class="field-hint" id="<?= escape($name) ?>-hint"><?= escape($field['hint']) ?></p>
+                <?php if (isset($errors[$name])): ?>
+                    <p class="field-error" id="<?= escape($name) ?>-error" role="alert"><?= escape($errors[$name]) ?></p>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+        <button type="submit">Calculate result</button>
+    </form>
+    <?php if ($result !== null): ?>
+        <section class="result-panel" aria-labelledby="result-title" aria-live="polite" aria-atomic="true">
+            <h2 id="result-title">Result</h2>
+            <?php if ($result['rows'] !== []): ?>
+                <dl class="result-rows">
+                    <?php foreach ($result['rows'] as $label => $value): ?>
+                        <dt><?= escape($label) ?></dt>
+                        <dd><?= escape($value) ?></dd>
+                    <?php endforeach; ?>
+                </dl>
+            <?php endif; ?>
+            <p><?php if ($result['label'] !== null): ?><?= escape($result['label']) ?>: <?php endif; ?><strong class="result-value"><?= escape($result['headline']) ?></strong></p>
+        </section>
+    <?php endif; ?>
 
     <nav class="page-navigation" aria-label="Previous and next exercise">
         <?php if ($position > 0): $previous = $ids[$position - 1]; ?>

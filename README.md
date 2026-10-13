@@ -26,7 +26,7 @@ The home page lists all six exercises with basic styling.
 
 ![PHP exercise home page](projects/php-conditionals/docs/screenshots/home-desktop.png)
 
-Each page accepts values and explains the rule behind the result.
+Each page contains a form and displays its result after a valid submission.
 
 ![Electricity calculation result](projects/php-conditionals/docs/screenshots/electricity-result-desktop.png)
 
