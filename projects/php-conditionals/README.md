@@ -44,7 +44,7 @@ Forms accept decimal prices with at most two fractional digits. Internally, `$pr
 
 Integers must fit PHP’s signed integer range. Money must fit that range in cents. Electricity units are capped at `intdiv(PHP_INT_MAX, 150)` to keep the maximum bill within the same range. Invalid or missing values produce field-specific errors and retain the submitted text. Commas and scientific notation are not accepted as numeric input.
 
-The app stores no user data and needs no database, session, framework, or client-side script. Styling uses local CSS and system fonts.
+The app stores no user data and needs no database, session, framework, or client-side script. A small local stylesheet provides a white background, Arial text, basic forms, and a single-column layout.
 
 ## Verification
 

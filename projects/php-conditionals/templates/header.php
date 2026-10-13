@@ -10,17 +10,13 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-    <div class="header-top container">
-        <a class="brand" href="<?= escape(app_url('index.php')) ?>"<?= $currentExercise === null ? ' aria-current="page"' : '' ?>>
-            <span class="brand-mark" aria-hidden="true">b.</span>
-            <span>BEWD <span class="brand-divider">/</span> <span class="brand-label">Learning lab</span></span>
-        </a>
-        <span class="header-tag"><span class="status-dot" aria-hidden="true"></span> PHP fundamentals</span>
+    <div class="container">
+        <p class="site-title">BEWD · PHP Exercises</p>
+        <nav class="exercise-nav" aria-label="Exercises">
+            <a href="<?= escape(app_url('index.php')) ?>"<?= $currentExercise === null ? ' aria-current="page"' : '' ?>>Home</a>
+            <?php foreach ($catalogue as $id => $item): ?>
+                <a href="<?= escape(app_url('exercises/' . $id . '.php')) ?>"<?= $currentExercise === $id ? ' aria-current="page"' : '' ?>><?= escape($item['nav']) ?></a>
+            <?php endforeach; ?>
+        </nav>
     </div>
-    <nav class="exercise-nav container" aria-label="Exercises">
-        <a class="home-link" href="<?= escape(app_url('index.php')) ?>"<?= $currentExercise === null ? ' aria-current="page"' : '' ?>>Overview</a>
-        <?php foreach ($catalogue as $id => $item): ?>
-            <a href="<?= escape(app_url('exercises/' . $id . '.php')) ?>"<?= $currentExercise === $id ? ' aria-current="page"' : '' ?>><span class="nav-number"><?= escape($item['number']) ?></span> <?= escape($item['nav']) ?></a>
-        <?php endforeach; ?>
-    </nav>
 </header>

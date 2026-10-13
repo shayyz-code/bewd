@@ -22,7 +22,7 @@ Open [localhost:8000](http://localhost:8000). Press `Ctrl+C` to stop the server.
 
 ## Preview
 
-The home page links to all six exercises.
+The home page lists all six exercises with basic styling.
 
 ![PHP exercise home page](projects/php-conditionals/docs/screenshots/home-desktop.png)
 
